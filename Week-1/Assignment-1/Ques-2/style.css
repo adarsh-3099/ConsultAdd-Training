@@ -1,0 +1,15 @@
+body{
+    background-color: blanchedalmond;
+}
+
+.parent {
+    margin: 200px;
+    width: 75%;
+}
+.parent > .child {
+    background-color: blue;
+    border-radius: 30px;
+    width: 30%;
+    height: 48px;
+    font-size: 24px;
+}
