@@ -2,6 +2,9 @@
 x = 5;
 var x;
 
+y = 6;
+let y; // this will give error as hoisting works only for var
+
 /* Closure - Closure means that an inner function always has access to the vars and parameters 
 of its outer function, even after the outer function has returned. */
 function OuterFunction() {
