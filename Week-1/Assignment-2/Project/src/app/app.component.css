@@ -1,0 +1,16 @@
+.currency-conventor{
+ display: flex;
+}
+.currency-conventor div{
+    padding:10px 10px;
+}
+h6,h4{
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+.pl-0{
+    padding-left: 0px!important;
+}
+.mt-0{
+    margin-top: 0px!important;
+}

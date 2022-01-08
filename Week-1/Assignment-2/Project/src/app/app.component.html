@@ -1,0 +1,39 @@
+<div>
+  <h3>Currency Conventor</h3>
+  <div class="container">
+    <div class="currency-conventor">
+      <div>
+        <div class="pl-0">
+          <h4>Select Currency</h4>
+        </div>
+        <select plceholder="Select Currency" [(ngModel)]="currencyIndex" (change)="selectionChange()">
+          <option value="">Select Currency</option>
+          <option *ngFor="let i of currencyList;let j=index;" value="{{j}}">{{i.symbol+' '+i.name}}</option>
+        </select>
+      </div>
+      <div>
+        <div class="pl-0">
+          <h4>
+            Please enter value
+          </h4>
+        </div>
+        <input type="number" placeholder="Please enter value" [(ngModel)]="currencyValue" (input)="selectionChange()">
+      </div>
+      <div>
+        <div class="pl-0">
+          <h4>Select Currency </h4>
+        </div>
+        <select plceholder="Select Currency" [(ngModel)]="currencyConvertedValue" (change)="selectionChange()">
+          <option value="">Select Currency</option>
+          <option *ngFor="let i of currencyList;let j=index;" value="{{i.symbol}}">{{i.symbol+' '+i.name}}</option>
+        </select>
+      </div>
+      <div *ngIf="convertedValue">
+        <div class="pl-0">
+          <h4>Converted currency value </h4>
+        </div>
+        <h4 class="mt-0">{{convertedValue}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
