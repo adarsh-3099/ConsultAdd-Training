@@ -18,10 +18,6 @@ function App() {
   
   console.log(country)
   
-  // const convert = () =>{
-  //   setRes(curr[country]*data)
-  // }
-
   return (
     <div className="App">
       <h1>App</h1>
@@ -34,7 +30,6 @@ function App() {
           <option value="YEN">YEN</option>
           <option value="YUAN">YUAN</option>
         </select>
-      {/* <button onClick={convert()}>Convert</button> */}
       <h3>{country}{" "}{curr[country]*data}</h3>
     </div>
   );
