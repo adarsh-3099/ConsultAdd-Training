@@ -1,0 +1,48 @@
+<!-- <!-- <header>
+    <h1 [ngStyle]="{'color': color}">{{ title }}</h1>
+    <button>Convert</button>
+    <input [value]="myStr" />
+    <input [required]="myBool" />
+</header> -->
+
+<!-- // Two Way Binding 
+<input [(ngModel)]="ninja.name" />
+<p>{{ ninja.name }}</p>
+<p>{{ ninja.power }}</p> -->
+
+<!-- <ng-content></ng-content> -->
+
+<!-- <p [ngClass]="{'blue': false, 'red': true, 'underline': false }">NG Class works</p>
+
+<p *ngIf="myBool">Only if true</p>
+
+<style>
+    .blue{ color: blue }
+    .red{ color: red }
+    .underline{ text-decoration: underline; }
+</style> -->
+<!-- 
+<h1>Ninja Listing</h1>
+
+<<ul id="ninja-listing">
+    <li *ngFor="let post of posts">{{ post }}</li>
+</ul>  -->
+
+<h1>Header Works</h1>
+<h3>User Data List</h3>
+    <div *ngIf="userList?.length > 0 ">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ele of userList;">
+                <td>{{ele.id}}</td>
+                <td>{{ele.title}}</td>
+              </tr>
+              </tbody>
+              </table>
+    </div>
