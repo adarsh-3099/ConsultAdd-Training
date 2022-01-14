@@ -17,11 +17,9 @@ export class AppComponent {
   { name: 'Indonesian rupiah', symbol: 'Rp', value: { '₹': 0.00517951, '$': 0.0000696701, '৳': 0.00598616, 'Rp': 1, '£': 0.000051486203 } }, 
   { name: 'British Pound', symbol: '£', value: { '₹': 100.622, '$': 1.35375, '৳': 116.277, 'Rp': 19422.7, '£': 1 } }];
   Chnange() {
-    console.log(this.currIdx);
-    console.log(this.currVal);
-
+    
     if (this.currIdx && this.currVal && this.convertedVal) {
-      console.log(this.currList[this.currIdx].value[this.convertedVal])
+      
       this.CV = this.currVal * this.currList[this.currIdx].value[this.convertedVal];
     }
   }
