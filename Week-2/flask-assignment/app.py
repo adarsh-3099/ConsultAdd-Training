@@ -41,19 +41,30 @@ def index():
     else:
         employees = Employee.query.order_by(Employee.id).all()
         department = Department.query.order_by(Department.dept).distinct()
-        print(employees)
+        #print(employees)
         return render_template("index.html", employees = employees, department = department)
 
 
 @app.route('/delete/<int:id>')
 def delete(id):
     emp_to_del = Employee.query.get_or_404(id)
-    print(emp_to_del.dept)
-    emp_left_of_that_dept = Employee.query.get_or_404(emp_to_del.dept)
+    
+    emp_left_of_that_dept = len(Employee.query.filter(Employee.dept == emp_to_del.dept).all())
+
+    if emp_left_of_that_dept == 1:
+        dept_del = Department.query.get_or_404(emp_to_del.dept)
+
     try:
-        db.session.delete(emp_to_del)
-        db.session.commit()
-        return redirect("/")
+        if emp_left_of_that_dept > 1:
+            db.session.delete(emp_to_del)
+            db.session.commit()
+            return redirect("/")
+        else:
+            db.session.delete(emp_to_del)
+            db.session.delete(dept_del)
+            db.session.commit()
+            return redirect("/")
+
     except:
         return "Something Went Wrong"
 
@@ -76,25 +87,6 @@ def update(id):
 
     else:
         return render_template("update.html", emp = emp)
-
-@app.route("/dept",methods = ["POST", "GET"])
-def dept():
-    if request.method == 'POST':
-        dept = request.form["dept"]
-        dept_name = request.form["dept_name"]
-        manager_name = request.form["manager_name"]
-        new_Dept = Department(dept=dept, dept_name=dept_name, manageer_name=manager_name)
-
-        try:
-            db.session.add(new_Dept)
-            db.session.commit()
-            return redirect("/dept")
-        except:
-            return "There was an issue"
-
-    else:
-        department = Department.query.order_by(Department.id).all()
-        return render_template("dept.html", department = department)
 
 
 if __name__ == "__main__":
