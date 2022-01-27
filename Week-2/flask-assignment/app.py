@@ -14,8 +14,8 @@ class Employee(db.Model):
     manageer_name = db.Column(db.String(20))
 
 class Department(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    dept = db.Column(db.String(20))
+    id = db.Column(db.Integer)
+    dept = db.Column(db.String(20), db.ForeignKey(Employee.dept), primary_key = True)
     dept_name = db.Column(db.String(20))
     manageer_name = db.Column(db.String(20))
 
@@ -48,20 +48,10 @@ def index():
 @app.route('/delete/<int:id>')
 def delete(id):
     emp_to_del = Employee.query.get_or_404(id)
-
+    print(emp_to_del.dept)
+    emp_left_of_that_dept = Employee.query.get_or_404(emp_to_del.dept)
     try:
         db.session.delete(emp_to_del)
-        db.session.commit()
-        return redirect("/")
-    except:
-        return "Something Went Wrong"
-
-@app.route('/dept/delete/<int:id>')
-def delete_dept(id):
-    dept_to_del = Department.query.get_or_404(id)
-
-    try:
-        db.session.delete(dept_to_del)
         db.session.commit()
         return redirect("/")
     except:
