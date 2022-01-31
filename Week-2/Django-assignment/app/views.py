@@ -31,8 +31,33 @@ def add(request):
 
 def delete(request,id):
     
-    Employee.objects.get(pk=id).delete()
+    a = Employee.objects.get(pk=id)
+    print(a.dept)
+    emp_left_of_that_dept = len(Employee.objects.filter(dept = a.dept).all())
+    a.delete()
+    return redirect('index')
 
+def update(request,id):
+    if request.method == 'GET':
+        employee = Employee.objects.get(pk=id)
+        data = {
+            "id":employee.id,
+            "name":employee.name,
+            "mname":employee.manager_name,
+            "dept":employee.dept.dept_name
+        }
+        print(data)
+        return render(request,'edit.html',data)
+    else:
+        employee = Employee.objects.get(pk=id)
+
+        employee.name = request.POST.get('name')
+        employee.manager_name = request.POST.get('mname')
+        employee.dept_name = request.POST.get('dept')
+
+        employee.save()
+        return redirect('index')
+        
     return redirect('index')
 
 def update(request,id):
