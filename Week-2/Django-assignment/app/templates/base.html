@@ -5,6 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: sans-serif;
+            background-color: lightblue;
+        }
+
+        .content{
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        table, tr, th {
+            border: 1px solid #aaa;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            height: 30px;
+        }
+
+        td {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .form {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
   
@@ -24,7 +58,7 @@
       </form>
 
     <h2>Employee Details</h2>
-    
+    <div class="content">
     <table>
         <tr>
           <th>Name</th>
@@ -37,12 +71,12 @@
           <td> {{emp.name}}</td>
           <td> {{emp.manager_name}}</td>
           <td>{{emp.dept}}</td>
-          <td><a href="update/{{emp.id}}">✏️</a></td>
-          <td><a href="delete/{{emp.id}}">🗑️</a></td>
+          <td><a href="update/{{emp.id}}">Update</a></td>
+          <td><a href="delete/{{emp.id}}">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
-
+    </div>
     <h2>Department Details</h2>
     <table>
         <tr>
