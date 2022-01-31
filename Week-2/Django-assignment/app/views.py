@@ -59,11 +59,3 @@ def update(request,id):
         return redirect('index')
         
     return redirect('index')
-
-def update(request,id):
-    if request.method == 'GET':
-        employee = Employee.objects.filter(pk=id)
-        
-        return HttpResponse("<h2>Success!!</h2>")
-
-    
