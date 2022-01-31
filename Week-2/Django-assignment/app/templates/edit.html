@@ -5,24 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: sans-serif;
+            background-color: lightblue;
+        }
+
+        .content{
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        table, tr, th {
+            border: 1px solid #aaa;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            height: 30px;
+        }
+
+        td {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .form {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    
-    <h1>Edit page</h1>
+    <div class="content">
     <h1>Edit Form</h1>
-    <form action="/update/{{}}" method="POST">
+    <form action="/update/{{id}}/" method="POST">
         {%csrf_token%}
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" ><br>
+        <input type="text" id="name" name="name" value="{{name}}"><br>
 
         <label for="mname">Manager</label><br>
-        <input type="text" id="mname" name="mname" ><br><br>
+        <input type="text" id="mname" name="mname" value="{{mname}}"><br><br>
 
         <label for="dept">Department</label><br>
-        <input type="text" id="dept" name="dept"><br><br>
+        <input type="text" id="dept" name="dept" value="{{dept}}"><br><br>
 
         <input type="submit" value="Submit">
       </form>
-
+    </div>
 </body>
 </html>
